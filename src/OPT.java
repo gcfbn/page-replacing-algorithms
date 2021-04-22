@@ -48,8 +48,8 @@ public class OPT implements Algorithm {
                         foundFutureRequest = true;
                         break;
                     }
-
                 }
+
                 // if there is no future request to frames[i], this page would be replaced
                 // current highest distance does not matter
                 if (!foundFutureRequest) {
