@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FIFO implements Algorithm{
+public class FIFO implements Algorithm {
 
     private static final int EMPTY_FRAME_CODE = -1;
 
@@ -17,30 +17,19 @@ public class FIFO implements Algorithm{
         int removeAsNext = 0;
         int framesInUse = 0;
 
-        for (int requestedPage : requests){
+        for (int requestedPage : requests) {
 
-            // check if framesArray contains requested page
-            boolean pageFound = false;
-            for (int frameValues : framesArray){
-                if (frameValues == requestedPage){
-                    pageFound = true;
-                    break;
-                }
-            }
-
-            if (pageFound) continue;
+            // if framesArray already contains requested page, go to the next request
+            if (ArrayHelper.indexOf(requestedPage, framesArray) != -1)
+                continue;
 
             // if there are empty frames, try to find one
-            if (framesInUse < framesArray.length){
-                for (int i=0; i<framesArray.length; i++){
-
-                    // if frame with index i is empty
-                    if (framesArray[i] == EMPTY_FRAME_CODE){
-                        framesArray[i] = requestedPage;
-                        pageFaultCounter++;
-                        framesInUse++;
-                    }
-                }
+            // then, write requested page into this frame and go to the next request
+            if (framesInUse < framesArray.length) {
+                int emptyFrameIndex = ArrayHelper.indexOf(EMPTY_FRAME_CODE, framesArray);
+                framesArray[emptyFrameIndex] = requestedPage;
+                framesInUse++;
+                pageFaultCounter++;
                 continue;
             }
 
