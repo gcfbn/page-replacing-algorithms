@@ -60,7 +60,6 @@ public class OPT implements Algorithm {
 
             framesArray[indexHighestDistance] = requestedPage;
             pageFaultsCounter++;
-            framesInUse++;
         }
 
         return pageFaultsCounter;

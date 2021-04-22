@@ -35,7 +35,6 @@ public class FIFO implements Algorithm {
             // replace frame with removeAsNext index by requested page
             pageFaultsCounter++;
             framesArray[removeAsNext] = requestedPage;
-            framesInUse++;
 
             // set removeAsNext to next frame or 0, if current index is last index in array
             removeAsNext = (removeAsNext + 1) % framesArray.length;

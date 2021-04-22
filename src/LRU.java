@@ -54,7 +54,6 @@ public class LRU implements Algorithm {
             pageFaultsCounter++;
             timestamps[minimumTimestampIndex] = r;
             framesArray[minimumTimestampIndex] = requestedPage;
-            framesInUse++;
         }
 
         return pageFaultsCounter;
