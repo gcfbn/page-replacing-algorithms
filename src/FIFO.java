@@ -13,7 +13,7 @@ public class FIFO implements Algorithm {
         // fill array with values which mark frame as empty
         Arrays.fill(framesArray, EMPTY_FRAME_CODE);
 
-        int pageFaultCounter = 0;
+        int pageFaultsCounter = 0;
         int removeAsNext = 0;
         int framesInUse = 0;
 
@@ -29,19 +29,19 @@ public class FIFO implements Algorithm {
                 int emptyFrameIndex = ArrayHelper.indexOf(EMPTY_FRAME_CODE, framesArray);
                 framesArray[emptyFrameIndex] = requestedPage;
                 framesInUse++;
-                pageFaultCounter++;
+                pageFaultsCounter++;
                 continue;
             }
 
             // if all frames are in use and any frame does not contain requested page,
             // replace frame with removeAsNext index by requested page
-            pageFaultCounter++;
+            pageFaultsCounter++;
             framesArray[removeAsNext] = requestedPage;
 
             // set removeAsNext to next frame or 0, if current index is last index in array
             removeAsNext = (removeAsNext + 1) % framesArray.length;
         }
 
-        return pageFaultCounter;
+        return pageFaultsCounter;
     }
 }
