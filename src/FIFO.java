@@ -3,8 +3,6 @@ import java.util.Arrays;
 
 public class FIFO implements Algorithm {
 
-    private static final int EMPTY_FRAME_CODE = -1;
-
     @Override
     public int executeAndCountPageFaults(ArrayList<Integer> requests, int frames) {
 
