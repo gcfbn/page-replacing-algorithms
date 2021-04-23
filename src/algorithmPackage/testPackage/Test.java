@@ -1,3 +1,9 @@
+package algorithmPackage.testPackage;
+
+import algorithmPackage.implementations.*;
+import algorithmPackage.otherClasses.Algorithm;
+import algorithmPackage.requestPackage.RequestGenerator;
+
 import java.util.ArrayList;
 
 public class Test {

@@ -1,3 +1,8 @@
+package algorithmPackage.implementations;
+
+import algorithmPackage.otherClasses.Algorithm;
+import algorithmPackage.otherClasses.ArrayHelper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

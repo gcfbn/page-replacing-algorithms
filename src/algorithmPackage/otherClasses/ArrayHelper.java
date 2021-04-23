@@ -1,3 +1,5 @@
+package algorithmPackage.otherClasses;
+
 public class ArrayHelper {
 
     /**

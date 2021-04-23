@@ -1,3 +1,5 @@
+package algorithmPackage.otherClasses;
+
 import java.util.ArrayList;
 
 public interface Algorithm {

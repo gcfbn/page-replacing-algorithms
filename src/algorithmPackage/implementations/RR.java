@@ -1,7 +1,13 @@
+package algorithmPackage.implementations;
+
+import algorithmPackage.otherClasses.Algorithm;
+import algorithmPackage.otherClasses.ArrayHelper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
-public class FIFO implements Algorithm {
+public class RR implements Algorithm {
 
     @Override
     public int executeAndCountPageFaults(ArrayList<Integer> requests, int frames) {
@@ -12,8 +18,9 @@ public class FIFO implements Algorithm {
         Arrays.fill(framesArray, EMPTY_FRAME_CODE);
 
         int pageFaultsCounter = 0;
-        int removeAsNext = 0;
         int framesInUse = 0;
+
+        Random randomGenerator = new Random();
 
         for (int requestedPage : requests) {
 
@@ -32,14 +39,13 @@ public class FIFO implements Algorithm {
             }
 
             // if all frames are in use and any frame does not contain requested page,
-            // replace frame with removeAsNext index by requested page
+            // generate random index and replace frame with this index
+            int randomIndex = randomGenerator.nextInt(framesArray.length);
+            framesArray[randomIndex] = requestedPage;
             pageFaultsCounter++;
-            framesArray[removeAsNext] = requestedPage;
-
-            // set removeAsNext to next frame or 0, if current index is last index in array
-            removeAsNext = (removeAsNext + 1) % framesArray.length;
         }
 
         return pageFaultsCounter;
     }
+
 }
