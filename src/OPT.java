@@ -42,9 +42,10 @@ public class OPT implements Algorithm {
                 boolean foundFutureRequest = false;
                 for (int j = r; j < requests.size(); j++) {
                     if (requests.get(j) == framesArray[i]) {
-                        if (highestDistance < j - r)
+                        if (highestDistance < j - r) {
                             highestDistance = j - r;
-                        indexHighestDistance = i;
+                            indexHighestDistance = i;
+                        }
                         foundFutureRequest = true;
                         break;
                     }
